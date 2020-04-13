@@ -38,11 +38,14 @@ main.py:
     OUTPUT:  
         USA DOMESTIC FLIGHTS 2018 DELAYS PDF report, sent via e-mail
         
- <br>       
-reportL4.py:fuction that crates the report
+<br>       
+reportL4.py:
+>)fuction that crates the report
 <br>
-generatePDF.py: funtion that generates the PDF report
+generatePDF.py: 
+>)funtion that generates the PDF report
 <br>
-functions.py: other support functions
+functions.py: 
+>)other support functions
 
 
