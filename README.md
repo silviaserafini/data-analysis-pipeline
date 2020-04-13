@@ -5,9 +5,9 @@
 BRIEF DESCRIPTION:
 
 Data analysis of 2018 USA flights delays Database and PDF report generation sent via e-mail.
-
-##CONTENTS:
-
+<br>
+CONTENTS:
+<br>
 cleaning.ipynb:
 
     INPUT: 
@@ -19,27 +19,27 @@ cleaning.ipynb:
 
 main.py:
 
-###INPUT:
-  -b, --best            flag: show the data related to the fastest operators
-                        (if false, show the slowest operators)
-                        
-  -y, --depDelay        flag: show the data related to departure delays (if
-                        False, show arrival delays)
-                        
-  -a ARRAIRPORT,  --arrAirport ARRAIRPORT       landing airport [IATA code]
-                        
-                        
-  -d DEPAIRPORT,  --depAirport DEPAIRPORT       departure airport [IATA code]
-                        
-                        
-  -c AIRLINECODE, --airlineCode AIRLINECODE     airline [2 characters IATA code]
-                        
-                        
-###OUTPUT:  
-    USA DOMESTIC FLIGHTS 2018 DELAYS PDF report, sent via e-mail
+    INPUT:
+      -b, --best            flag: show the data related to the fastest operators
+                            (if false, show the slowest operators)
+
+      -y, --depDelay        flag: show the data related to departure delays (if
+                            False, show arrival delays)
+
+      -a ARRAIRPORT,  --arrAirport ARRAIRPORT       landing airport [IATA code]
+
+
+      -d DEPAIRPORT,  --depAirport DEPAIRPORT       departure airport [IATA code]
+
+
+      -c AIRLINECODE, --airlineCode AIRLINECODE     airline [2 characters IATA code]
+
+
+    OUTPUT:  
+        USA DOMESTIC FLIGHTS 2018 DELAYS PDF report, sent via e-mail
         
-        
-reportL4.py: fuction that crates the report
+ <br>       
+reportL4.py:fuction that crates the report
 generatePDF.py: funtion that generates the PDF report
 functions.py: other support functions
 
