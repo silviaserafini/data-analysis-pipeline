@@ -40,7 +40,9 @@ main.py:
         
  <br>       
 reportL4.py:fuction that crates the report
+<br>
 generatePDF.py: funtion that generates the PDF report
+<br>
 functions.py: other support functions
 
 
