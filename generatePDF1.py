@@ -2,9 +2,7 @@
 from fpdf import FPDF 
 import pandas as pd
 # importing modules
-from table import *
-from makePretty import fit_word
-from config import font_type_table_header, font_type_table_body, white, green, yellow
+from functions import *
 
 def generatePDF1():
 
@@ -24,7 +22,7 @@ def generatePDF1():
     pdf.add_page()
 
     pdf.set_font("Arial", "B", 16)
-    pdf.cell(0,10,"USA DOMESTIC FLIGHT DELAYS 2018",1,1,"C")
+    pdf.cell(0,10,"USA DOMESTIC FLIGHTS DELAYS 2018",1,1,"C")
 
     pdf.set_font("Arial", "B", 14)
     pdf.cell(95,10,"",0,1,"C")

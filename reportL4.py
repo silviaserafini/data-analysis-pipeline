@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
 import json
-from plotTime import plotTime, plotAirline, plotBestAirport, plotWorstAirport
+from functions import plotTime, plotAirline, plotBestAirport, plotWorstAirport, sendMail
 from generatePDF1 import generatePDF1
 import smtplib
 import base64
-from sendEmailTo import sendMail
+
 
 def CreateReport(airlineCode=None,time=0,depAirport=None,arrAirport=None,depDelay=True, best=False):
     #Creates a report filtering the database according to the parameters given
