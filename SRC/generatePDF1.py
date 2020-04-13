@@ -2,7 +2,7 @@
 from fpdf import FPDF 
 import pandas as pd
 # importing modules
-from functions import *
+from SRC.functionsToGenerateReportAndSendMail import *
 
 def generatePDF1():
 

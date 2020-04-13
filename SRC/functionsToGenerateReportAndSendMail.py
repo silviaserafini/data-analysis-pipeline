@@ -12,7 +12,8 @@ from fpdf import FPDF
 def plotTime(df_analysis):
     df_analysis["2MONTHS_BINS"] = pd.cut(df_analysis.MONTH, bins=[0,2,4,6,8,10,12],
                      labels=['01-02','03-04','05-06','07-08','09-10','11-12'])
-    res = df_analysis.groupby("2MONTHS_BINS").agg({"ARR_DELAY": "mean","DEP_DELAY":"mean"})
+    #res = df_analysis.groupby("2MONTHS_BINS").agg({"ARR_DELAY": "mean","DEP_DELAY":"mean"})
+    res = df_analysis.groupby("2MONTHS_BINS").agg({"DELAY": "mean"})
     res1=res.plot.bar()
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.2)
@@ -23,8 +24,11 @@ def plotTime(df_analysis):
     
     return res
     
-def plotAirline(df1):
-    res=df1.groupby("AIRLINE_NAME").agg({"ARR_DELAY": "mean","DEP_DELAY":"mean"}).reset_index().set_index('AIRLINE_NAME').sort_values('ARR_DELAY')
+def plotAirline(df1,best):
+    if best:
+        res=df1.groupby("AIRLINE_NAME").agg({"ARR_DELAY": "mean","DEP_DELAY":"mean"}).reset_index().set_index('AIRLINE_NAME').sort_values('ARR_DELAY')
+    else:
+        res=df1.groupby("AIRLINE_NAME").agg({"ARR_DELAY": "mean","DEP_DELAY":"mean"}).reset_index().set_index('AIRLINE_NAME').sort_values('ARR_DELAY',ascending=False)
     res1=res.plot.bar()
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.5)
@@ -41,7 +45,7 @@ def plotBestAirport(df1):
     res1=res.plot.bar()
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.5)
-    plt.title('BestAirport avarage Delays')
+    plt.title('Airport avarage Delays')
     plt.show()
     fig.savefig('SRC/airport.jpg')
     res.to_csv("SRC/airport.csv")
@@ -53,7 +57,7 @@ def plotWorstAirport(df1):
     res1=res.plot.bar()
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.5)
-    plt.title('WorstAirport avarage Delays')
+    plt.title('Airport avarage Delays')
     plt.show()
     fig.savefig('SRC/airport.jpg')
     res.to_csv("SRC/airport.csv")
@@ -93,7 +97,7 @@ def sendMail(mailAddress, filename, bodyText):
     subject = "An email with attachment from Python"
     body = bodyText
     sender_email = "tzvuccyseraf@gmail.com"
-    receiver_email = "tzvuccyseraf@gmail.com"
+    receiver_email = mailAddress
     password = input("Type your password and press enter:")
 
     # Create a multipart message and set headers

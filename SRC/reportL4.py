@@ -1,20 +1,20 @@
 import pandas as pd
 import numpy as np
 import json
-from functions import plotTime, plotAirline, plotBestAirport, plotWorstAirport, sendMail
-from generatePDF1 import generatePDF1
+from SRC.functionsToGenerateReportAndSendMail  import plotTime, plotAirline, plotBestAirport, plotWorstAirport, sendMail
+from SRC.generatePDF1 import generatePDF1
 import smtplib
 import base64
 
 
-def CreateReport(airlineCode=None,time=0,depAirport=None,arrAirport=None,depDelay=True, best=False):
+def CreateReport(airlineCode=None,depAirport=None,arrAirport=None,depDelay=True, best=False):
     #Creates a report filtering the database according to the parameters given
     data1 = pd.read_csv (r"SRC/delays_clean_small.csv", encoding='latin-1')
     df1 = pd.DataFrame(data1)
     df_analysis=df1
     
     #import the dictionary to fetch the airport name given the iata code
-    f = open('d.json',)   
+    f = open('OUTPUT/d.json',)   
     # returns JSON object as a dictionary 
     data = json.load(f) 
     f.close() 
@@ -53,11 +53,6 @@ def CreateReport(airlineCode=None,time=0,depAirport=None,arrAirport=None,depDela
         except:
             return 'The airline is not operating between these airports'
      
-    if time==1:
-        df_analysis=df_analysis[df_analysis['MONTH'] == 1 ]
-        outputString += f'Time Span = December 2018\n'
-    else:
-        outputString += f'Time Span = year 2018\n' 
 
     #-------------------------------------------------------------------------
     #basic statistics    
@@ -91,7 +86,7 @@ def CreateReport(airlineCode=None,time=0,depAirport=None,arrAirport=None,depDela
     print('\n')
 
     #plotAirline
-    res=plotAirline(df_analysis)
+    res=plotAirline(df_analysis,best)
     print(res)
     print('\n')
 
