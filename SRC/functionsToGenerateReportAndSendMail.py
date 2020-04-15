@@ -8,6 +8,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from fpdf import FPDF 
+import getpass 
 
 def plotTime(df_analysis):
     df_analysis["2MONTHS_BINS"] = pd.cut(df_analysis.MONTH, bins=[0,2,4,6,8,10,12],
@@ -18,9 +19,9 @@ def plotTime(df_analysis):
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.2)
     plt.title('Avarage dealays [2 months bins]')
-    plt.show()
-    fig.savefig('SRC/plot.jpg')
-    res.to_csv("SRC/2monthsbins.csv")
+    #plt.show()
+    fig.savefig('OUTPUT/plot.jpg')
+    res.to_csv("OUTPUT/2monthsbins.csv")
     
     return res
     
@@ -34,9 +35,9 @@ def plotAirline(df1,best):
     fig.subplots_adjust(bottom=0.5)
     ax_list = fig.axes
     plt.title('Airlines avarage Delays')
-    plt.show()
-    fig.savefig('SRC/plotAirline.jpg')
-    res.to_csv("SRC/airlines.csv")
+    #plt.show()
+    fig.savefig('OUTPUT/plotAirline.jpg')
+    res.to_csv("OUTPUT/airlines.csv") 
     
     return res
 
@@ -46,9 +47,9 @@ def plotBestAirport(df1):
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.5)
     plt.title('Airport avarage Delays')
-    plt.show()
-    fig.savefig('SRC/airport.jpg')
-    res.to_csv("SRC/airport.csv")
+    #plt.show()
+    fig.savefig('OUTPUT/airport.jpg')
+    res.to_csv("OUTPUT/airport.csv")
     
     return res
 
@@ -58,9 +59,9 @@ def plotWorstAirport(df1):
     fig=res1.get_figure()
     fig.subplots_adjust(bottom=0.5)
     plt.title('Airport avarage Delays')
-    plt.show()
-    fig.savefig('SRC/airport.jpg')
-    res.to_csv("SRC/airport.csv")
+    #plt.show()
+    fig.savefig('OUTPUT/airport.jpg')
+    res.to_csv("OUTPUT/airport.csv")
     return res
 
 def tableColumns(df):
@@ -98,7 +99,13 @@ def sendMail(mailAddress, filename, bodyText):
     body = bodyText
     sender_email = "tzvuccyseraf@gmail.com"
     receiver_email = mailAddress
-    password = input("Type your password and press enter:")
+    #password = input("Type your password and press enter:")
+    try: 
+        password = getpass.getpass() 
+    except Exception as error: 
+        print('ERROR', error) 
+    else: 
+        print('Password is correct')
 
     # Create a multipart message and set headers
     message = MIMEMultipart()

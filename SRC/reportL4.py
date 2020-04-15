@@ -43,7 +43,8 @@ def CreateReport(airlineCode=None,depAirport=None,arrAirport=None,depDelay=True,
     if arrAirport:
         df_analysis=df_analysis[df_analysis['DEST'] == arrAirport ]
         location=df_analysis.iloc[1,27]
-        outputString += f'Arrival Airport = {location}\n'
+        country=df_analysis.iloc[1,26]
+        outputString += f'Arrival Airport = {location}, {country}\n'
     
     if airlineCode:
         try:
@@ -108,6 +109,6 @@ def CreateReport(airlineCode=None,depAirport=None,arrAirport=None,depDelay=True,
     #email 
 
     filename = "OUTPUT/report.pdf"
-    address='tzvuccyseraf@gmail.com'
-
+    #address='tzvuccyseraf@gmail.com'
+    address=input('insert your e-mail address: ')
     sendMail(address,filename,outputString)

@@ -7,13 +7,13 @@ from SRC.functionsToGenerateReportAndSendMail import *
 def generatePDF1():
 
     #load the dataframe datas
-    data = pd.read_csv (r"SRC/2monthsbins.csv", encoding='latin-1')
+    data = pd.read_csv (r"OUTPUT/2monthsbins.csv", encoding='latin-1')
     df1 = pd.DataFrame(data)
 
-    data = pd.read_csv (r"SRC/airlines.csv", encoding='latin-1')
+    data = pd.read_csv (r"OUTPUT/airlines.csv", encoding='latin-1')
     df2 = pd.DataFrame(data)
 
-    data = pd.read_csv (r"SRC/airport.csv", encoding='latin-1')
+    data = pd.read_csv (r"OUTPUT/airport.csv", encoding='latin-1')
     df3 = pd.DataFrame(data)
 
     # Generate FPDF object and add page
@@ -57,7 +57,7 @@ def generatePDF1():
         pdf.ln()
 
     pdf.set_xy(25,120)
-    pdf.image("SRC/plot.jpg", x = 25, y = None, w = 160, h = 0)
+    pdf.image("OUTPUT/plot.jpg", x = 25, y = None, w = 160, h = 0)
 
     #####################################################################
     pdf.add_page()
@@ -97,7 +97,7 @@ def generatePDF1():
         pdf.ln()
 
     pdf.set_xy(25,155)
-    pdf.image("SRC/plotAirline.jpg", x = 25, y = None, w = 160, h = 0)
+    pdf.image("OUTPUT/plotAirline.jpg", x = 25, y = None, w = 160, h = 0)
 
 
     #####################################################################
@@ -138,7 +138,7 @@ def generatePDF1():
         pdf.ln()
 
     pdf.set_xy(25,155)
-    pdf.image("SRC/airport.jpg", x = 25, y = None, w = 160, h = 0)
+    pdf.image("OUTPUT/airport.jpg", x = 25, y = None, w = 160, h = 0)
 
     # Save File
     pdf.output("OUTPUT/report.pdf","F")
